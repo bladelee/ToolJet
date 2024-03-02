@@ -9,6 +9,9 @@ RUN npm install -g @nestjs/cli
 RUN mkdir -p /app
 WORKDIR /app
 
+# sources.list
+RUN cat /etc/apt/sources.list 
+
 COPY ./package.json ./package.json
 
 # Building ToolJet plugins
