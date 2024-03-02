@@ -19,6 +19,7 @@ RUN NODE_ENV=production npm --prefix plugins run build
 RUN npm --prefix plugins prune --production
 
 # Build frontend
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 COPY ./frontend/package.json ./frontend/package-lock.json ./frontend/
 RUN npm --prefix frontend install
 COPY ./frontend/ ./frontend/
