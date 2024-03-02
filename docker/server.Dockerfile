@@ -9,9 +9,6 @@ RUN npm install -g @nestjs/cli
 RUN mkdir -p /app
 WORKDIR /app
 
-# sources.list
-RUN cat /etc/apt/sources.list 
-
 COPY ./package.json ./package.json
 
 # Building ToolJet plugins
@@ -29,6 +26,9 @@ COPY ./server/ ./server/
 RUN npm --prefix server run build
 
 FROM debian:11
+
+# sources.list
+RUN cat /etc/apt/sources.list 
 
 RUN apt-get update -yq \
     && apt-get install curl gnupg zip -yq \
