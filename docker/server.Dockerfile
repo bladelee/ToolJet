@@ -29,6 +29,9 @@ FROM debian:11
 
 # sources.list
 RUN cat /etc/apt/sources.list 
+RUN mv  /etc/apt/sources.list  /etc/apt/sources.list.bak
+COPY ./docker/sources.list  /etc/apt/sources.list
+RUN cat /etc/apt/sources.list 
 
 RUN apt-get update -yq \
     && apt-get install curl gnupg zip -yq \
